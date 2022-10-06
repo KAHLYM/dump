@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.title, '[DO NOT MERGE] ')
     steps:
-    - name: Get pull request title
-      run: echo ::set-output name=new_pull_request_title::$(echo ${github.event.pull_request.title//Text/Message})
-      id: extract
     - name: Remove [DO NOT MERGE] from pull request title
       uses: actions/github-script@v6
       with:
@@ -19,7 +16,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: context.issue.number,
-            title: "${{ steps.extract.output.new_pull_request_title }}"
+            title: "${github.event.pull_request.title//'[DO NOT MERGE] '/}"
           })
     - name: Add DO NOT MERGE label to pull request issue
       uses: actions/github-script@v6
