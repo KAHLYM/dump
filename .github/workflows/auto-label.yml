@@ -20,7 +20,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: context.issue.number,
-            title: "${{ steps.extract.output.new_pull_request_title }}"
+            title: ${{ steps.extract.output.new_pull_request_title }}
           })
     - name: Add DO NOT MERGE label to pull request issue
       uses: actions/github-script@v6
