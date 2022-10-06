@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Get pull request title
       shell: bash
-      run: echo "##[set-output name=new_pull_request_title;]$(echo ${github.event.pull_request.title//Test/Message})"
+      run: echo "##[set-output name=new_pull_request_title;]$(echo ${github.event.pull_request.title//Text/Message})"
       id: extract
     - name: Remove [DO NOT MERGE] from pull request title
       uses: actions/github-script@v6
