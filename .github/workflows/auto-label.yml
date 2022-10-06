@@ -16,7 +16,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: context.issue.number,
-            title: ${github.event.pull_request.title//'[DO NOT MERGE] '/}
+            title: ${{github.event.pull_request.title//'[DO NOT MERGE] '/}}
           })
     - name: Add DO NOT MERGE label to pull request issue
       uses: actions/github-script@v6
