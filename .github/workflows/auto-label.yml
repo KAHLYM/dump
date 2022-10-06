@@ -8,22 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.title, '[DO NOT MERGE] ')
     steps:
-    - uses: actions/github-script@v6
     - name: Remove [DO NOT MERGE] from pull request title
-        with:
-          script: |
-            github.rest.pulls.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.pull.number,
-              title: ${ github.event.pull_request.title//"[DO NOT MERGE] "/}
-            })
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.pulls.update({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.pull.number,
+            title: ${ github.event.pull_request.title//"[DO NOT MERGE] "/}
+          })
     - name: Add DO NOT MERGE label to pull request issue
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              labels: ['DO NOT MERGE']
-            })
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            labels: ['DO NOT MERGE']
+          })
