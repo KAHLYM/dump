@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Extract JIRA ticket
       shell: bash
-      run: echo ::set-output name=jira_ticket "${{ github.ref_name }} | grep -oP 'WINEP-[0-9]*'"
+      run: echo ::set-output name=jira_ticket::$(echo ${ github.ref_name } | grep -oP 'WINEP-[0-9]*')
       id: extract
     - name: Add label
       uses: actions/github-script@v6
