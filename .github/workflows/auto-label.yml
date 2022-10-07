@@ -16,7 +16,7 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          github.rest.issues.addComment({
+          github.rest.issues.createComment({
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.issue.number,
