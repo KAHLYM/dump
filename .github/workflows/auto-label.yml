@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Extract JIRA ticket
       id: extract
-      run: echo "##[set-output name=jira_ticket;]$(echo ${ github.head_ref || github.ref_name | grep -oP 'WINEP-[0-9]*'})"
+      run: echo "##[set-output name=jira_ticket;]$(echo ${{github.head_ref || github.ref_name} | grep -oP 'WINEP-[0-9]*'})"
     - name: Add comment
       uses: actions/github-script@v6
       with:
