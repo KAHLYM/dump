@@ -5,7 +5,7 @@ on:
 jobs:
   auto-label:
     runs-on: ubuntu-latest
-    if: contains(${{ github.head_ref || github.ref_name }}, 'WINEP-')
+    if: "contains(${{ github.head_ref || github.ref_name }}, 'WINEP-')"
     steps:
     - name: Extract JIRA ticket
       id: extract
