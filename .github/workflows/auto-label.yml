@@ -19,7 +19,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.issue.number,
-            body: "Hi 👋, the JIRA ticket [${{ steps.extract.output.jira_ticket }}](https://www.jira.sophos.net/browse/${{ steps.extract.output.jira_ticket }}) was extracted from the branch name."
+            body: "Hi 👋, the JIRA ticket [${{steps.extract.output.jira_ticket}}](https://www.jira.sophos.net/browse/${{ steps.extract.output.jira_ticket }}) was extracted from the branch name."
           })
     # - name: Get pull request title
     #   shell: bash
