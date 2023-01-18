@@ -12,7 +12,7 @@ jobs:
           fetch-depth: 0
       - name: Run git commands
         run: |
-          git checkout origin/main
+          git checkout main
           git pull
           git checkout automation/one
           git pull
