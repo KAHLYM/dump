@@ -6,21 +6,16 @@ jobs:
   get-latest-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Fetch all history for all tags and branches
         uses: actions/checkout@v3
         with:
-          ref: main
-
-      - name: Checkout automation
-        uses: actions/checkout@v3
-        with:
-          ref: automation/one
-
-      - name: Update automation
-        uses: actions/checkout@v3
-        with:
-          ref: automation/one
+          fetch-depth: 0
+      - name: Run git commands
         run: |
+          git checkout origin/main
+          git pull
+          git checkout automation/one
+          git pull
           git merge --ff-only origin/main
           git push
   # call-esg-ci:
