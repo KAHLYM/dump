@@ -7,12 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update branch
-        run: |
-          git checkout main
-          git pull
-          git checkout automation/one
-          git merge --ff-only main
-          git push
+        run: git checkout main
   # call-esg-ci:
   #   runs-on: esgci
   #   steps:
