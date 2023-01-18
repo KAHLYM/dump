@@ -7,17 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         with:
           ref: main
+
       - name: Checkout automation
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         with:
           ref: automation/one
+
       - name: Update automation
-      - run: git merge --ff-only main
+        run: git merge --ff-only main
+
       - name: Push updates
-      - run: git push
+        run: git push
   # call-esg-ci:
   #   runs-on: esgci
   #   steps:
