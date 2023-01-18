@@ -3,11 +3,17 @@ on:
   - cron: 0 0 * * *
 
 jobs:
-  get-latest:
+  get-latest-code:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Update branch
-        run: git checkout main
+        run: |
+          git checkout main
+          git pull
+          git checkout automation/one
+          git merge --ff-only main
+          git push
   # call-esg-ci:
   #   runs-on: esgci
   #   steps:
