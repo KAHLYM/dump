@@ -9,10 +9,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Update branch
         run: |
-          git checkout develop
+          git checkout main
           git pull
           git checkout automation/one
-          git merge --ff-only develop
+          git merge --ff-only main
           git push
   # call-esg-ci:
   #   runs-on: esgci
