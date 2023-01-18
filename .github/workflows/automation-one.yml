@@ -8,11 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Update branch
-        run:  git checkout develop
-              git pull
-              git checkout automation/one
-              git merge --ff-only develop
-              git push
+        run: |
+          git checkout develop
+          git pull
+          git checkout automation/one
+          git merge --ff-only develop
+          git push
   # call-esg-ci:
   #   runs-on: esgci
   #   steps:
