@@ -13,9 +13,9 @@ jobs:
               git checkout automation/one
               git merge --ff-only develop
               git push
-  call-esg-ci:
-    runs-on: esgci
-    steps:
-      - name: Ignored by ESG CI runner
-        shell: Ignored by ESG CI runner
-        run: Ignored by ESG CI runner
+  # call-esg-ci:
+  #   runs-on: esgci
+  #   steps:
+  #     - name: Ignored by ESG CI runner
+  #       shell: Ignored by ESG CI runner
+  #       run: Ignored by ESG CI runner
