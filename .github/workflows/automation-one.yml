@@ -16,7 +16,7 @@ jobs:
           git pull
           git checkout automation/one
           git pull
-          git merge --ff-only origin/main
+          git merge --ff-only main
           git push
   # call-esg-ci:
   #   runs-on: esgci
