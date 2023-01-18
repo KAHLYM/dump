@@ -6,8 +6,8 @@ jobs:
   get-latest-develop:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Update branch
-        uses: actions/checkout@v3
         run:  git checkout develop
               git pull
               git checkout automation/one
