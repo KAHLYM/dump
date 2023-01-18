@@ -1,0 +1,21 @@
+on:
+  schedule:
+  - cron: 0 0 * * *
+
+jobs:
+  get-latest-develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update branch
+        uses: actions/checkout@v3
+        run:  git checkout develop
+              git pull
+              git checkout automation/one
+              git merge --ff-only develop
+              git push
+  call-esg-ci:
+    runs-on: esgci
+    steps:
+      - name: Ignored by ESG CI runner
+        shell: Ignored by ESG CI runner
+        run: Ignored by ESG CI runner
