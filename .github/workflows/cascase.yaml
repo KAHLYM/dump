@@ -21,6 +21,8 @@ jobs:
             });
 
             if (!pull_requests.length()) {
+              const release = '${{ github.ref_name }}'.match('release\\/WIN-(?:SPRINT-)?(\\d{4}\\.\\d{2})')
+              const nice_name = release ? release[1] : 'release'
 
               const result = await github.rest.pulls.create({
                 title: 'Merge release to main',
