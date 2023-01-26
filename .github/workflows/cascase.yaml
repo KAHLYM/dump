@@ -25,7 +25,7 @@ jobs:
               const nice_name = release ? release[1] : 'release'
 
               const result = await github.rest.pulls.create({
-                title: 'Merge release to main',
+                title: 'Merge { nice_name } to main',
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 head: '${{ github.ref_name }}',
