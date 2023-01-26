@@ -19,7 +19,7 @@ jobs:
               head: '${{ github.ref_name }}',
               base: 'main'
             });
-            
+            console.log('${{ github.ref_name }}')
             if (!pull_requests.data.length) {
               const release = '${{ github.ref_name }}'.match('release\\/(\\d{4}\\.\\d{2})-\\d.\\d.\\d')
               const nice_name = release ? release[1] : 'release'
