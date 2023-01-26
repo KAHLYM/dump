@@ -1,0 +1,41 @@
+name: Merge release to develop
+on:
+  push:
+    branches:
+      - 'release/**'
+  
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Pull Request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pull_requests = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: '${{ github.ref_name }}',
+              base: 'develop'
+            });
+
+            if (!pull_requests.length()) {
+              const release = '${{ github.ref_name }}'.match('release\\/WIN-(?:SPRINT-)?(\\d{4}\\.\\d{2})')
+              const nice_name = release ? release[1] : 'release'
+
+              const result = await github.rest.pulls.create({
+                title: 'Merge { release } to develop',
+                context.repo.owner,
+                context.repo.repo,
+                head: '${{ github.ref_name }}',
+                base: 'develop'
+              });
+
+              await github.rest.issues.addLabels({
+                context.repo.owner,
+                context.repo.repo,
+                issue_number: result.data.number,
+                labels: ['AUTOMATED']
+              });
+            }
