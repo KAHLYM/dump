@@ -20,7 +20,7 @@ jobs:
               base: 'main'
             });
             
-            if (!pull_requests.data.length()) {
+            if (!pull_requests.data) {
               const release = '${{ github.ref_name }}'.match('release\\/WIN-(?:SPRINT-)?(\\d{4}\\.\\d{2})')
               const nice_name = release ? release[1] : 'release'
 
