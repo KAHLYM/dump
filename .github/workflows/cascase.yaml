@@ -22,8 +22,9 @@ jobs:
             console.log('${{ github.ref_name }}')
             if (!pull_requests.data.length) {
               const release = '${{ github.ref_name }}'.match('release\\/(\\d{4}\\.\\d{2})-\\d.\\d.\\d')
+              console.log(release)
               const nice_name = release ? release[1] : 'release'
-
+              console.log(nice_name)
               const result = await github.rest.pulls.create({
                 title: 'Merge { nice_name } to main',
                 owner: context.repo.owner,
