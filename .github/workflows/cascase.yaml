@@ -22,15 +22,15 @@ jobs:
 
             const result = await github.rest.pulls.create({
               title: 'Merge release to develop',
-              context.repo.owner,
-              context.repo.repo,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               head: '${{ github.ref_name }}',
               base: 'develop'
             });
 
             await github.rest.issues.addLabels({
-              context.repo.owner,
-              context.repo.repo,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               issue_number: result.data.number,
               labels: ['AUTOMATED']
             });
