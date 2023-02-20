@@ -20,7 +20,7 @@ jobs:
               base: 'main'
             });
 
-            console.log("There are %i open pull requests");
+            console.log("There are %i open pull requests", pull_requests.data.length);
 
             if (!pull_requests.data.length) {
               console.log("Creating a pull request");
