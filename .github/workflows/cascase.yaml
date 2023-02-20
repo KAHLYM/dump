@@ -20,7 +20,11 @@ jobs:
               base: 'main'
             });
 
+            console.log("There are %i open pull requests");
+
             if (!pull_requests.data.length) {
+              console.log("Creating a pull request");
+
               const release = '${{ github.ref_name }}'.match('release\\/(\\d{4}\\.\\d{2})-\\d.\\d.\\d')
               const nice_title = 'Merge ' + (release ? release[1] : 'release') + ' to main'
               
@@ -31,6 +35,8 @@ jobs:
                 head: '${{ github.ref_name }}',
                 base: 'main'
               });
+
+              console.log("Request returned result: ", result);
 
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
