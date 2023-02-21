@@ -19,6 +19,8 @@ jobs:
               head: '${{ github.ref_name }}',
               base: 'main'
             });
+            
+            console.log("github.repository_owner: ", ${{ github.repository_owner }});
 
             console.log("There are %i open pull requests", pull_requests.data.length);
 
