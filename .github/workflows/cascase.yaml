@@ -20,7 +20,7 @@ jobs:
               base: 'main'
             });
             
-            console.log("github.repository_owner: ", ${{ github.repository_owner }});
+            console.log("head: ${{ github.repository_owner }}:${{ github.ref_name }}");
 
             console.log("There are %i open pull requests", pull_requests.data.length);
 
